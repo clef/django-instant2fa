@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Instant2FA Example</title>
+  </head>
+<body>
+  <div>
+    {% if user.is_anonymous %}
+    <a href="{% url 'login' %}">login</a>
+    {% else %}
+    <a href="{% url 'logout' %}">logout</a>
+    <div>
+      {{user.username}} is logged in
+    </div>
+    {% endif %}
+  </div>
+  {% block content %}
+  {% endblock %}
+  </body>
+</html>

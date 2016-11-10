@@ -1,0 +1,8 @@
+<form action="{% url 'two_factor_verification' %}" method="POST">
+  {% csrf_token %}
+  <script
+      class="instant2fa-page"
+      src="https://js.instant2fa.com/hosted.js"
+      data-uri="{{ url }}"
+  ></script>
+</form>
