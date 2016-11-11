@@ -6,7 +6,7 @@ Example for using Instant2FA with Django's built-in authentication system.
 
 
 * [Docker Compose](https://docs.docker.com/compose/install/) 1.8.0+
-* Instant2FA API credentials. You can generate these at [https://dashboard.instant2fa.com](https://dashboard.instant2fa.com)
+* Instant2FA API credentials. You can generate these at [https://dashboard.instant2fa.com/signup](https://dashboard.instant2fa.com/signup)
 
 ## Getting Started
 

@@ -7,6 +7,7 @@ python manage.py migrate
 # Create superuser
 echo "Seeding database with a superuser"
 python manage.py seed
+
 # Start server
 echo "Starting server"
 python manage.py runserver 0.0.0.0:8000

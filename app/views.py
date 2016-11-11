@@ -38,7 +38,8 @@ def redirect_to_user_settings():
 
 def do_login(request):
     """
-    Log the user whose distinct_id is stored in the session and clear the request session.
+    Log the user whose distinct_id is stored in the session and clear the
+    request session.
     """
     distinct_id = request.session.pop('distinct_id')
     user = User.objects.get(id=distinct_id)
@@ -67,7 +68,7 @@ def two_factor_verification(request):
     try:
         confirmed = instant2fa.confirm_verification(distinct_id, token)
     except instant2fa.errors.VerificationMismatch:
-        logging.debug('The code does not match the distinct_id in the session')
+        logging.debug('The distinct_id in the session does not match.')
         return HttpResponseRedirect('/login/two-factor/')
     except instant2fa.errors.VerificationFailed:
         logging.debug(
@@ -113,8 +114,7 @@ def login_entrypoint(request, authentication_form=AuthenticationForm):
     # store the user's id in the session so you can perform Instant2FA check
     if form.is_valid():
         user = form.get_user()
-        distinct_id = get_user_distinct_id(user)
-        request.session['distinct_id'] = distinct_id
+        request.session['distinct_id'] = get_user_distinct_id(user)
         return HttpResponseRedirect('/login/two-factor/')
     else:
         logging.debug("User did not provide valid authentication credentials.")
